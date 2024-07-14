@@ -1,12 +1,10 @@
 const express = require('express');
-const {
-  getPredialById,
-  getPublicPredialById
-} = require('../controllers/predialController');
+const authMiddleware = require('../middlewares/authMiddleware');
+const predialController = require('../controllers/predialController');
 
 const router = express.Router();
 
-router.get('/:id', getPredialById);
-router.get('/public/:id', getPublicPredialById);
+router.get('/:id', authMiddleware, predialController.getPredialById);
+router.get('/public/:id', predialController.getPublicPredialById);
 
 module.exports = router;

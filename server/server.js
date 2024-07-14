@@ -16,7 +16,6 @@ const app = express();
 //*Static Files
 app.use(express.static(__dirname + '/../public'));
 
-// TODO: Add auth module
 //* Routes 
 app.get('/api/', (req, res) => { res.send('API'); });
 app.use('/api/predial', predialRoutes);
