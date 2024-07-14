@@ -1,7 +1,8 @@
 const errorMiddleware = (err, req, res, next) => {
-  console.error('Something went wrong:', res.statusCode, err);
   const statusCode = res.statusCode ? res.statusCode : 500;
   res.status(statusCode);
+
+  res.set('Content-Type', 'application/json');
   res.json({
     message: err.message,
     stack: process.env.NODE_ENV === "development" ? err.stack : null

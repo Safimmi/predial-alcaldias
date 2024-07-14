@@ -27,34 +27,9 @@ document.addEventListener('DOMContentLoaded', () => {
     SPINNER.classList.toggle('spinner--hidden');
   }
 
-  function displayPredialData(predial) {
-    const template = `
-      <table class="predial-table">
-        <tr class="predial-table__headers">
-          <th>Ficha</th>
-          <th>Matrícula</th>
-          <th>Propietario</th>
-          <th>Recibo</th>
-          <th>Fecha de Facturación</th>
-        </tr>
-        <tr class="predial-table__data">
-          <td> ${predial.ficha[0]} </td>
-          <td> ${predial.matricula[0]} </td>
-          <td> ${predial.propietario[0]} </td>
-          <td> ${predial.fecha_facturacion[0]} </td>
-          <td>
-            <div class="predial-table__download">
-              <img src="images/pdf.png" alt=recibo-pdf" />
-            </div>
-          </td>
-        </tr>
-      </table>`;
-    DATA_CONTAINER.innerHTML = template;
-  }
-
   function displayError(error) {
-    const template = `<p class="predial__error"> ${error.message} </p>`;
-    DATA_CONTAINER.innerHTML = template;
+    console.log(error);
+    DATA_CONTAINER.innerHTML = `<p class="predial__error">Algo salió mal</p>`;
   }
 
   //* Events
@@ -75,16 +50,11 @@ document.addEventListener('DOMContentLoaded', () => {
     fetch(url, {
       method,
       headers: {
-        'Content-Type': 'application/json'
+        'Accept': 'text/html'
       }
     })
-      .then(response => {
-        if (response.status == 404) {
-          throw new Error(`No se encontró un registro con el número de ficha </br> ${predialNumber}`);
-        }
-        return response.json();
-      })
-      .then(predialData => displayPredialData(predialData))
+      .then(response => response.text())
+      .then(predialData => DATA_CONTAINER.innerHTML = predialData)
       .catch(error => displayError(error))
       .finally(() => {
         toggleSpinner();

@@ -5,8 +5,10 @@ if (process.env.NODE_ENV !== 'production') {
 const express = require('express');
 
 const database = require('./config/database');
-const errorMiddleware = require('./middlewares/errorMiddleware');
 const predialRoutes = require('./routes/predialRoutes');
+
+const errorMiddleware = require('./middlewares/errorMiddleware');
+const publicErrorMiddleware = require('./middlewares/publicErrorMiddleware');
 
 //* App
 const app = express();
@@ -20,6 +22,7 @@ app.get('/api/', (req, res) => { res.send('API'); });
 app.use('/api/predial', predialRoutes);
 
 //* Error Handlers (Middleware)
+app.use(publicErrorMiddleware);
 app.use(errorMiddleware);
 
 //* Server
