@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Impuesto Predial Municipio de Natagaima Tolima</title>
+  <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+
+  <link type="text/css" rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+
+  <div class="main__wrapper">
+    <header class="header">
+      <div class="header__logo">
+        <img class="header__logo-img" src="images/natagaima-tolima-logo-small.png" alt="logo-alcaldia" />
+      </div>
+
+      <div class="header__info">
+        <h1 class="header__info-title">Alcaldía Municipal de Natagaima Tolima</h1>
+        <h2 class="header__info-entity">Secretaria de Hacienda del Municipio de Natagaima Tolima</h2>
+        <p class="header__info-description">Consulta y descarga la Factura del Impuesto Predial del Municipio de Natagaima Tolima</p>
+      </div>
+    </header>
+
+    <div class="content__wrapper">
+      <section class="search-bar">
+        <form
+          id="predialForm"
+          class="search-bar__form"
+          action="/api/predial"
+          method="GET">
+          <label class="search-bar__label" for="predialInput">Número de Ficha :</label>
+          <div id="predialInputContainer" class="search-bar__input-container">
+            <i class="search-bar__input-icon fa fa-home"></i>
+            <!-- TODO: Create custom data validation instead of using input attributes -->
+            <input
+              id="predialInput"
+              class="search-bar__input"
+              name="predialInput"
+              type="text"
+              placeholder="00 000 00 00 0000 0000 000"
+              autocomplete="off"
+              minlength="20">
+          </div>
+          <button class="search-bar__button" type="submit">Buscar</button>
+        </form>
+
+        <div class="search-bar__igac">
+          <a class="search-bar__igac-link" href="https://tramites.igac.gov.co/geltramitesyservicios/conversionNrosPrediales/convertirNrosPrediales.seam">
+            Consulte su número de ficha en el Instituto Geográfico Agustín Codazzi
+          </a>
+        </div>
+      </section>
+
+      <section class="data">
+        <div id="dataContainer" class="data__container"></div>
+        <div class="spinner__container">
+          <div id="spinner" class="spinner spinner--hidden"></div>
+        </div>
+      </section>
+    </div>
+
+    <footer class="footer">
+      <div class="footer__copy">
+        <p>&copy; Creado y Diseñado por S &amp; Y Goblal Solutions Group</p>
+        <p>Mg Angel Eduardo Barrios Rodriguez | Todos los derechos reservados</p>
+      </div>
+    </footer>
+  </div>
+
+  <script src="scripts/main.js"></script>
+</body>
+
+</html>
