@@ -57,7 +57,6 @@ const getPublicPredialById = async (req, res, next) => {
     res.set('Content-Type', 'text/html');
     res.status(200).send(template);
   } catch (error) {
-    res.locals.public = true;
     next(error);
   }
 };
