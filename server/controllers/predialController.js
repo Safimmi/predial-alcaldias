@@ -1,7 +1,6 @@
 const Predial = require("../models/predial");
 
 //TODO: Use "ficha" as the ID on the DB so it can be indexed => Use .findById() instead of .findOne()
-// TODO: Do data validation to prevent SQL injection
 
 const getPredialById = async (req, res, next) => {
   try {
