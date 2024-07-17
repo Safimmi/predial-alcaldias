@@ -6,7 +6,9 @@ const publicErrorMiddleware = (err, req, res, next) => {
   const statusCode = res.statusCode ? res.statusCode : 500;
   res.status(statusCode);
 
-  err.message = res.statusCode !== 404 ? "Error del servidor" : err.message;
+  const isServerError = res.statusCode.toString().startsWith('5');
+  err.message = isServerError ? "Error del servidor" : err.message;
+
   res.set('Content-Type', 'text/html');
   res.send(`<p class="predial__error">${err.message}</p>`);
 };
