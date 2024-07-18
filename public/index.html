@@ -36,7 +36,6 @@
           <label class="search-bar__label" for="predialInput">Número de Ficha :</label>
           <div id="predialInputContainer" class="search-bar__input-container">
             <i class="search-bar__input-icon fa fa-home"></i>
-            <!-- TODO: Create custom data validation instead of using input attributes -->
             <input
               id="predialInput"
               class="search-bar__input"
@@ -44,7 +43,8 @@
               type="text"
               placeholder="00 000 00 00 0000 0000 000"
               autocomplete="off"
-              minlength="20">
+              required
+              pattern="[\d\s]+">
           </div>
           <button class="search-bar__button" type="submit">Buscar</button>
         </form>

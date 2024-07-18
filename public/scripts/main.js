@@ -5,18 +5,22 @@ document.addEventListener('DOMContentLoaded', () => {
   const PREDIAL_INPUT_CONTAINER = document.getElementById('predialInputContainer');
   const PREDIAL_INPUT = document.getElementById('predialInput');
 
-  function formatPredialNumberInput(input) {
-    let value = input.value.replace(/\s+/g, '').replace(/[^0-9]/g, '');
-    let formattedValue = '';
+  //* METHODS
 
-    for (let i = 0; i < value.length; i++) {
-      if (i > 0 && i % 4 === 0) {
-        formattedValue += ' ';
-      }
-      formattedValue += value.charAt(i);
+  function init() {
+    PREDIAL_INPUT.setCustomValidity("Ingrese un número de ficha");
+  }
+
+  function validatePredialId(input) {
+    let validationMessage = "";
+
+    if (input.validity.valueMissing) {
+      validationMessage = "Ingrese un número de ficha";
+    } else if (input.validity.patternMismatch) {
+      validationMessage = "El número de ficha debe ser numérico";
     }
 
-    input.value = formattedValue;
+    PREDIAL_INPUT.setCustomValidity(validationMessage);
   }
 
   function clearData() {
@@ -32,10 +36,10 @@ document.addEventListener('DOMContentLoaded', () => {
     DATA_CONTAINER.innerHTML = `<p class="predial__error">Algo salió mal</p>`;
   }
 
-  //* Events
+  //* EVENTS
 
   PREDIAL_INPUT_CONTAINER.addEventListener('click', () => PREDIAL_INPUT.focus());
-  PREDIAL_INPUT.addEventListener('input', e => formatPredialNumberInput(e.target));
+  PREDIAL_INPUT.addEventListener('input', e => validatePredialId(e.target));
 
   PREDIAL_FORM.addEventListener("submit", e => {
     e.preventDefault();
@@ -44,7 +48,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const endpoint = e.target.getAttribute("action");
     const method = e.target.getAttribute("method");
-    const predialNumber = String(PREDIAL_INPUT.value).replace(/\s+/g, '');
+
+    let predialNumber = PREDIAL_INPUT.value ? PREDIAL_INPUT.value.replace(/\s+/g, '') : "%20";
     const url = `${endpoint}/${predialNumber}`;
 
     fetch(url, {
@@ -61,4 +66,8 @@ document.addEventListener('DOMContentLoaded', () => {
         PREDIAL_FORM.reset();
       });
   });
+
+  //* INIT
+
+  init();
 });
