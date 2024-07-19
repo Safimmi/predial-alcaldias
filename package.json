@@ -1,0 +1,11 @@
+{
+  "name": "predial-alcaldias",
+  "version": "1.0.0",
+  "description": "servicio de descarga del recibo predial",
+  "main": "./server/server.js",
+  "scripts": {
+    "start": "node ./server/server.js"
+  },
+  "author": "",
+  "license": "SEE LICENSE IN LICENCE.txt"
+}
