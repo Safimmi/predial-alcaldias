@@ -1,0 +1,83 @@
+{
+  "FICHA": {
+    "fieldType": "single-text",
+    "map": "ficha"
+  },
+  "FICHA_CORTA": {
+    "fieldType": "single-text",
+    "map": "fichaCorta"
+  },
+  "PROPIETARIO": {
+    "fieldType": "single-text",
+    "map": "propietario"
+  },
+  "FACTURA": {
+    "fieldType": "single-text",
+    "map": "factura",
+    "alignment": "CENTER",
+    "isBold": true
+  },
+  "LLAVE": {
+    "fieldType": "single-text",
+    "map": "llave",
+    "alignment": "CENTER",
+    "isBold": true
+  },
+  "AREA_HA": {
+    "fieldType": "single-text",
+    "map": "areaHa"
+  },
+  "AREA_MTS": {
+    "fieldType": "single-text",
+    "map": "areaMts"
+  },
+  "CONSTRUIDO": {
+    "fieldType": "single-text",
+    "map": "construido"
+  },
+  "MATRICULA": {
+    "fieldType": "single-text",
+    "map": "matricula"
+  },
+  "ESTRATO": {
+    "fieldType": "single-text",
+    "map": "estrato"
+  },
+  "FECHA_FACTURACION": {
+    "fieldType": "single-text",
+    "map": "fechaFacturacion"
+  },
+  "DEBE_DESDE": {
+    "fieldType": "single-text",
+    "map": "pagoDesde"
+  },
+  "PAGO_DESDE": {
+    "fieldType": "single-text",
+    "map": "pagoDesde",
+    "alignment": "CENTER"
+  },
+  "PAGO_HASTA": {
+    "fieldType": "single-text",
+    "map": "pagoHasta",
+    "alignment": "CENTER"
+  },
+  "CAPITAL_CONCEPTO": {
+    "fieldType": "multiple-text",
+    "map": "capitalConcepto",
+    "fontSize": 8
+  },
+  "INTERESES_CONCEPTO": {
+    "fieldType": "multiple-text",
+    "map": "capitalConcepto",
+    "fontSize": 8
+  },
+  "REFERENCIA": {
+    "fieldType": "single-text",
+    "map": "referencia",
+    "isBold": true
+  },
+  "CODIGO_BARRAS": {
+    "fieldType": "barcode",
+    "map": "codigoBarras"
+  }
+}
