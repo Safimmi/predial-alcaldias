@@ -1,4 +1,5 @@
 const Predial = require("../models/predial");
+const { generateReceipt } = require("../utils/reports");
 
 //TODO: Use "ficha" as the ID on the DB so it can be indexed => Use .findById() instead of .findOne()
 
@@ -60,7 +61,29 @@ const getPublicPredialById = async (req, res, next) => {
   }
 };
 
+const getPredialReceipt = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const query = { ficha: { $in: [id] } };
+    const predial = await Predial.findOne(query);
+
+    if (!predial) {
+      res.status(404);
+      throw new Error(`No se encontró un registro con el número de ficha </br> ${id}`);
+    }
+
+    const report = await generateReceipt(predial);
+
+    res.setHeader('Content-Type', 'application/pdf');
+    res.setHeader('Content-Disposition', 'attachment; filename=predial.pdf');
+    res.status(200).end(report);
+  } catch (error) {
+    next(error);
+  };
+};
+
 module.exports = {
   getPredialById,
-  getPublicPredialById
+  getPublicPredialById,
+  getPredialReceipt
 };
