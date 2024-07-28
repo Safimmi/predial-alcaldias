@@ -45,7 +45,7 @@ const getPublicPredialById = async (req, res, next) => {
           <td> ${predial.ficha[0]} </td>
           <td> ${predial.matricula[0]} </td>
           <td> ${predial.propietario[0]} </td>
-          <td> ${predial.fecha_facturacion[0]} </td>
+          <td> ${predial.fechaFacturacion[0]} </td>
           <td>
             <div class="predial-table__download">
               <img src="images/pdf.png" alt=recibo-pdf" />
