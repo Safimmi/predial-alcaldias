@@ -16,9 +16,15 @@ async function saveFilledReport(pdfBytes) {
   await fs.promises.writeFile(OUTPUT_FORM_URL, pdfBytes);
 }
 
-async function loadBoldFont(pdfDoc) {
+async function loadEmbededFonts(pdfDoc) {
   // HACK: pdf-lib does not support native text decoration
-  return await pdfDoc.embedFont(StandardFonts.HelveticaBold);
+  const regular = await pdfDoc.embedFont(StandardFonts.Helvetica);
+  const bold = await pdfDoc.embedFont(StandardFonts.HelveticaBold);
+
+  return {
+    regular,
+    bold
+  };
 }
 
 function applyTextFormat(field, fieldMap) {
@@ -31,12 +37,11 @@ function applyTextFormat(field, fieldMap) {
   field.setAlignment(alignment);
 }
 
-function applyTextDecorations(field, fieldMap, boldFont) {
+function applyTextFonts(field, fieldMap, fonts) {
   const isBold = fieldMap.isBold;
+  const font = isBold ? fonts.bold : fonts.regular;
 
-  if (isBold) {
-    field.updateAppearances(boldFont);
-  }
+  field.updateAppearances(font);
 }
 
 function fillMultipleTextField(field, fieldMap, data) {
@@ -82,7 +87,7 @@ async function generateReceipt(data) {
     const formMapFile = await fs.promises.readFile(RECEIPT_FORM_MAP_URL);
     const formMap = JSON.parse(formMapFile);
 
-    const boldFont = await loadBoldFont(pdfDoc);
+    const fonts = await loadEmbededFonts(pdfDoc);
 
     for (const key of Object.keys(formMap)) {
       const fieldMap = formMap[key];
@@ -95,12 +100,13 @@ async function generateReceipt(data) {
           field = form.getTextField(key);
           fillSingleTextField(field, fieldMap, data);
           applyTextFormat(field, fieldMap);
-          applyTextDecorations(field, fieldMap, boldFont);
+          applyTextFonts(field, fieldMap, fonts);
           break;
         case MULTIPLE_TEXT:
           field = form.getTextField(key);
           fillMultipleTextField(field, fieldMap, data);
           applyTextFormat(field, fieldMap);
+          applyTextFonts(field, fieldMap, fonts);
           break;
         case BARCODE:
           field = form.getButton(key);
