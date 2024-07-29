@@ -6,7 +6,6 @@ const ReportError = require('../errors/reportError');
 
 const { CONFIG_PATH } = require('../config/config');
 const { SINGLE_TEXT, MULTIPLE_TEXT, BARCODE } = require('../constants/reportFieldTypes');
-const reportAlignmentTypes = require('../constants/reportAlignmentTypes');
 
 const { generateBarcode } = require('./barcode');
 
@@ -24,12 +23,12 @@ async function loadBoldFont(pdfDoc) {
 
 function applyTextFormat(field, fieldMap) {
   const fontSize = fieldMap.fontSize ? fieldMap.fontSize : 10;
-  const alignment = fieldMap.alignment && Object.hasOwn(reportAlignmentTypes, fieldMap.alignment)
-    ? reportAlignmentTypes[fieldMap.alignment]
-    : reportAlignmentTypes.LEFT;
+  const alignment = fieldMap.alignment && Object.hasOwn(TextAlignment, fieldMap.alignment)
+    ? TextAlignment[fieldMap.alignment]
+    : TextAlignment.Left;
 
   field.setFontSize(fontSize);
-  field.setAlignment(TextAlignment[alignment]);
+  field.setAlignment(alignment);
 }
 
 function applyTextDecorations(field, fieldMap, boldFont) {
