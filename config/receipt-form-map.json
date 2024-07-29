@@ -9,18 +9,23 @@
   },
   "PROPIETARIO": {
     "fieldType": "single-text",
-    "map": "propietario"
+    "map": "propietario",
+    "fontSize": 8
+  },
+  "PROPIETARIO_ID": {
+    "fieldType": "single-text",
+    "map": "propietarioId"
   },
   "FACTURA": {
     "fieldType": "single-text",
     "map": "factura",
-    "alignment": "CENTER",
+    "alignment": "Center",
     "isBold": true
   },
   "LLAVE": {
     "fieldType": "single-text",
     "map": "llave",
-    "alignment": "CENTER",
+    "alignment": "Center",
     "isBold": true
   },
   "AREA_HA": {
@@ -49,35 +54,163 @@
   },
   "DEBE_DESDE": {
     "fieldType": "single-text",
-    "map": "pagoDesde"
+    "map": "debeDesde"
   },
   "PAGO_DESDE": {
     "fieldType": "single-text",
     "map": "pagoDesde",
-    "alignment": "CENTER"
+    "alignment": "Center"
   },
   "PAGO_HASTA": {
     "fieldType": "single-text",
     "map": "pagoHasta",
-    "alignment": "CENTER"
+    "alignment": "Center"
   },
   "CAPITAL_CONCEPTO": {
     "fieldType": "multiple-text",
     "map": "capitalConcepto",
-    "fontSize": 8
+    "fontSize": 7
   },
-  "INTERESES_CONCEPTO": {
+  "CAPITAL_PERIODO": {
     "fieldType": "multiple-text",
-    "map": "capitalConcepto",
-    "fontSize": 8
+    "map": "capitalPeriodo",
+    "fontSize": 7
+  },
+  "CAPITAL_IMPUESTO": {
+    "fieldType": "multiple-text",
+    "map": "capitalImpuesto",
+    "alignment": "Right",
+    "fontSize": 7
+  },
+  "CAPITAL_DESC_1": {
+    "fieldType": "multiple-text",
+    "map": "capitalDesc1",
+    "alignment": "Right",
+    "fontSize": 7
+  },
+  "CAPITAL_POR_DESC_1": {
+    "fieldType": "multiple-text",
+    "map": "capitalPorDesc1",
+    "alignment": "Right",
+    "fontSize": 7
+  },
+  "CAPITAL_DESC_2": {
+    "fieldType": "multiple-text",
+    "map": "capitalDesc2",
+    "alignment": "Right",
+    "fontSize": 7
+  },
+  "CAPITAL_POR_DESC_2": {
+    "fieldType": "multiple-text",
+    "map": "capitalPorDesc2",
+    "alignment": "Right",
+    "fontSize": 7
+  },
+  "CAPITAL_DESC_3": {
+    "fieldType": "multiple-text",
+    "map": "capitalDesc3",
+    "alignment": "Right",
+    "fontSize": 7
+  },
+  "CAPITAL_POR_DESC_3": {
+    "fieldType": "multiple-text",
+    "map": "capitalPorDesc3",
+    "alignment": "Right",
+    "fontSize": 7
+  },
+  "FECHA_PAGO_HASTA_1": {
+    "fieldType": "single-text",
+    "map": "fechaPago1",
+    "alignment": "Center"
+  },
+  "FECHA_PAGO_HASTA_2": {
+    "fieldType": "single-text",
+    "map": "fechaPago2",
+    "alignment": "Center"
+  },
+  "FECHA_PAGO_HASTA_3": {
+    "fieldType": "single-text",
+    "map": "fechaPago3",
+    "alignment": "Center"
+  },
+  "TOTAL_PAGAR_1": {
+    "fieldType": "single-text",
+    "map": "pago1",
+    "alignment": "Right"
+  },
+  "TOTAL_PAGAR_2": {
+    "fieldType": "single-text",
+    "map": "pago2",
+    "alignment": "Right"
+  },
+  "TOTAL_PAGAR_3": {
+    "fieldType": "single-text",
+    "map": "pago3",
+    "alignment": "Right"
   },
   "REFERENCIA": {
     "fieldType": "single-text",
     "map": "referencia",
     "isBold": true
   },
-  "CODIGO_BARRAS": {
+  "CODIGO_BARRAS_1": {
     "fieldType": "barcode",
-    "map": "codigoBarras"
+    "map": "codigoBarras1"
+  },
+  "CODIGO_BARRAS_2": {
+    "fieldType": "barcode",
+    "map": "codigoBarras2"
+  },
+  "CODIGO_BARRAS_3": {
+    "fieldType": "barcode",
+    "map": "codigoBarras3"
+  },
+  "BT_REFERENCIA": {
+    "fieldType": "single-text",
+    "map": "referencia",
+    "isBold": true
+  },
+  "BT_FECHA_PAGO_HASTA_1": {
+    "fieldType": "single-text",
+    "map": "fechaPago1",
+    "alignment": "Center"
+  },
+  "BT_FECHA_PAGO_HASTA_2": {
+    "fieldType": "single-text",
+    "map": "fechaPago2",
+    "alignment": "Center"
+  },
+  "BT_FECHA_PAGO_HASTA_3": {
+    "fieldType": "single-text",
+    "map": "fechaPago3",
+    "alignment": "Center"
+  },
+  "BT_TOTAL_PAGAR_1": {
+    "fieldType": "single-text",
+    "map": "pago1",
+    "alignment": "Right"
+  },
+  "BT_TOTAL_PAGAR_2": {
+    "fieldType": "single-text",
+    "map": "pago2",
+    "alignment": "Right"
+  },
+  "BT_TOTAL_PAGAR_3": {
+    "fieldType": "single-text",
+    "map": "pago3",
+    "alignment": "Right"
+  },
+  "BT_DEBE_DESDE": {
+    "fieldType": "single-text",
+    "map": "debeDesde"
+  },
+  "BT_FICHA": {
+    "fieldType": "single-text",
+    "map": "ficha"
+  },
+  "BT_PROPIETARIO": {
+    "fieldType": "single-text",
+    "map": "propietario",
+    "fontSize": 8
   }
 }
