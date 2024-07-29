@@ -48,8 +48,11 @@ function fillMultipleTextField(field, fieldMap, data) {
   const map = fieldMap.map;
   let text = '';
   data[map].forEach(item => {
-    text = `${text}\n${item}`;
+    item = `${item}\n`;
+    text = `${text}${item}`;
   });
+
+  field.enableMultiline();
   field.setText(text);
 }
 
