@@ -1,6 +1,6 @@
 const reportFieldTypes = Object.freeze({
-  SINGLE_TEXT: "single-text",
-  MULTIPLE_TEXT: "multiple-text",
+  ONE_LINE: "one-line",
+  MULTI_LINE: "multi-line",
   BARCODE: "barcode"
 });
 

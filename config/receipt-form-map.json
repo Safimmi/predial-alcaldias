@@ -1,239 +1,239 @@
 {
   "REFERENCIA": {
-    "fieldType": "single-text",
+    "fieldType": "one-line",
     "map": "referencia",
     "fontSize": 10,
     "isBold": true
   },
   "FICHA": {
-    "fieldType": "single-text",
+    "fieldType": "one-line",
     "map": "ficha"
   },
   "FICHA_CORTA": {
-    "fieldType": "single-text",
+    "fieldType": "one-line",
     "map": "fichaCorta"
   },
   "PROPIETARIO": {
-    "fieldType": "single-text",
+    "fieldType": "one-line",
     "map": "propietario"
   },
   "PROPIETARIO_ID": {
-    "fieldType": "single-text",
+    "fieldType": "one-line",
     "map": "propietarioId"
   },
   "DIRECCION_1": {
-    "fieldType": "single-text",
+    "fieldType": "one-line",
     "map": "direccion1"
   },
   "DIRECCION_2": {
-    "fieldType": "single-text",
+    "fieldType": "one-line",
     "map": "direccion2"
   },
   "DIRECCION_3": {
-    "fieldType": "single-text",
+    "fieldType": "one-line",
     "map": "direccion3"
   },
   "DIRECCION_4": {
-    "fieldType": "single-text",
+    "fieldType": "one-line",
     "map": "direccion4"
   },
   "FACTURA": {
-    "fieldType": "single-text",
+    "fieldType": "one-line",
     "map": "factura",
     "alignment": "Center",
     "fontSize": 10,
     "isBold": true
   },
   "LLAVE": {
-    "fieldType": "single-text",
+    "fieldType": "one-line",
     "map": "llave",
     "alignment": "Center",
     "fontSize": 10,
     "isBold": true
   },
   "AREA_HA": {
-    "fieldType": "single-text",
+    "fieldType": "one-line",
     "map": "areaHa"
   },
   "AREA_MTS": {
-    "fieldType": "single-text",
+    "fieldType": "one-line",
     "map": "areaMts"
   },
   "AREA_CONSTRUIDO": {
-    "fieldType": "single-text",
+    "fieldType": "one-line",
     "map": "areaConstruido"
   },
   "MATRICULA": {
-    "fieldType": "single-text",
+    "fieldType": "one-line",
     "map": "matricula"
   },
   "ESTRATO": {
-    "fieldType": "single-text",
+    "fieldType": "one-line",
     "map": "estrato"
   },
   "FECHA_FACTURA": {
-    "fieldType": "single-text",
+    "fieldType": "one-line",
     "map": "fechaFactura"
   },
   "DEBE_DESDE": {
-    "fieldType": "single-text",
+    "fieldType": "one-line",
     "map": "debeDesde"
   },
   "PAGO_DESDE": {
-    "fieldType": "single-text",
+    "fieldType": "one-line",
     "map": "pagoDesde",
     "alignment": "Center",
     "fontSize": 10
   },
   "PAGO_HASTA": {
-    "fieldType": "single-text",
+    "fieldType": "one-line",
     "map": "pagoHasta",
     "alignment": "Center",
     "fontSize": 10
   },
   "CAPITAL_CONCEPTO": {
-    "fieldType": "multiple-text",
+    "fieldType": "multi-line",
     "map": "capitalConcepto",
     "fontSize": 7
   },
   "CAPITAL_PERIODO": {
-    "fieldType": "multiple-text",
+    "fieldType": "multi-line",
     "map": "capitalPeriodo",
     "fontSize": 7
   },
   "CAPITAL_IMPUESTO": {
-    "fieldType": "multiple-text",
+    "fieldType": "multi-line",
     "map": "capitalImpuesto",
     "alignment": "Right",
     "fontSize": 7
   },
   "CAPITAL_DESCUENTO_1": {
-    "fieldType": "multiple-text",
+    "fieldType": "multi-line",
     "map": "capitalDescuento1",
     "alignment": "Right",
     "fontSize": 7
   },
   "CAPITAL_PORCENTAJE_DESCUENTO_1": {
-    "fieldType": "multiple-text",
+    "fieldType": "multi-line",
     "map": "capitalPorcentajeDescuento1",
     "alignment": "Right",
     "fontSize": 7
   },
   "CAPITAL_DESCUENTO_2": {
-    "fieldType": "multiple-text",
+    "fieldType": "multi-line",
     "map": "capitalDescuento2",
     "alignment": "Right",
     "fontSize": 7
   },
   "CAPITAL_PORCENTAJE_DESCUENTO_2": {
-    "fieldType": "multiple-text",
+    "fieldType": "multi-line",
     "map": "capitalPorcentajeDescuento2",
     "alignment": "Right",
     "fontSize": 7
   },
   "CAPITAL_DESCUENTO_3": {
-    "fieldType": "multiple-text",
+    "fieldType": "multi-line",
     "map": "capitalDescuento3",
     "alignment": "Right",
     "fontSize": 7
   },
   "CAPITAL_PORCENTAJE_DESCUENTO_3": {
-    "fieldType": "multiple-text",
+    "fieldType": "multi-line",
     "map": "capitalPorcentajeDescuento3",
     "alignment": "Right",
     "fontSize": 7
   },
   "INTERESES_CONCEPTO": {
-    "fieldType": "multiple-text",
+    "fieldType": "multi-line",
     "map": "interesesConcepto",
     "fontSize": 7
   },
   "INTERESES_PERIODO": {
-    "fieldType": "multiple-text",
+    "fieldType": "multi-line",
     "map": "interesesPeriodo",
     "fontSize": 7
   },
   "INTERESES_VALOR_1": {
-    "fieldType": "multiple-text",
+    "fieldType": "multi-line",
     "map": "interesesValor1",
     "alignment": "Right",
     "fontSize": 7
   },
   "INTERESES_REBAJA_1": {
-    "fieldType": "multiple-text",
+    "fieldType": "multi-line",
     "map": "interesesRebaja1",
     "alignment": "Right",
     "fontSize": 7
   },
   "INTERESES_PORCENTAJE_REBAJA_1": {
-    "fieldType": "multiple-text",
+    "fieldType": "multi-line",
     "map": "interesesPorcentajeRebaja1",
     "alignment": "Right",
     "fontSize": 7
   },
   "INTERESES_VALOR_2": {
-    "fieldType": "multiple-text",
+    "fieldType": "multi-line",
     "map": "interesesValor2",
     "alignment": "Right",
     "fontSize": 7
   },
   "INTERESES_REBAJA_2": {
-    "fieldType": "multiple-text",
+    "fieldType": "multi-line",
     "map": "interesesRebaja2",
     "alignment": "Right",
     "fontSize": 7
   },
   "INTERESES_PORCENTAJE_REBAJA_2": {
-    "fieldType": "multiple-text",
+    "fieldType": "multi-line",
     "map": "interesesPorcentajeRebaja2",
     "alignment": "Right",
     "fontSize": 7
   },
   "INTERESES_VALOR_3": {
-    "fieldType": "multiple-text",
+    "fieldType": "multi-line",
     "map": "interesesValor3",
     "alignment": "Right",
     "fontSize": 7
   },
   "INTERESES_REBAJA_3": {
-    "fieldType": "multiple-text",
+    "fieldType": "multi-line",
     "map": "interesesRebaja3",
     "alignment": "Right",
     "fontSize": 7
   },
   "INTERESES_PORCENTAJE_REBAJA_3": {
-    "fieldType": "multiple-text",
+    "fieldType": "multi-line",
     "map": "interesesPorcentajeRebaja3",
     "alignment": "Right",
     "fontSize": 7
   },
   "FECHA_PAGO_HASTA_1": {
-    "fieldType": "single-text",
+    "fieldType": "one-line",
     "map": "fechaPago1",
     "alignment": "Center"
   },
   "FECHA_PAGO_HASTA_2": {
-    "fieldType": "single-text",
+    "fieldType": "one-line",
     "map": "fechaPago2",
     "alignment": "Center"
   },
   "FECHA_PAGO_HASTA_3": {
-    "fieldType": "single-text",
+    "fieldType": "one-line",
     "map": "fechaPago3",
     "alignment": "Center"
   },
   "TOTAL_PAGAR_1": {
-    "fieldType": "single-text",
+    "fieldType": "one-line",
     "map": "pago1",
     "alignment": "Right"
   },
   "TOTAL_PAGAR_2": {
-    "fieldType": "single-text",
+    "fieldType": "one-line",
     "map": "pago2",
     "alignment": "Right"
   },
   "TOTAL_PAGAR_3": {
-    "fieldType": "single-text",
+    "fieldType": "one-line",
     "map": "pago3",
     "alignment": "Right"
   },
@@ -250,55 +250,55 @@
     "map": "codigoBarras3"
   },
   "BT_REFERENCIA": {
-    "fieldType": "single-text",
+    "fieldType": "one-line",
     "map": "referencia",
     "fontSize": 10,
     "isBold": true
   },
   "BT_FECHA_PAGO_HASTA_1": {
-    "fieldType": "single-text",
+    "fieldType": "one-line",
     "map": "fechaPago1",
     "alignment": "Center"
   },
   "BT_FECHA_PAGO_HASTA_2": {
-    "fieldType": "single-text",
+    "fieldType": "one-line",
     "map": "fechaPago2",
     "alignment": "Center"
   },
   "BT_FECHA_PAGO_HASTA_3": {
-    "fieldType": "single-text",
+    "fieldType": "one-line",
     "map": "fechaPago3",
     "alignment": "Center"
   },
   "BT_TOTAL_PAGAR_1": {
-    "fieldType": "single-text",
+    "fieldType": "one-line",
     "map": "pago1",
     "alignment": "Right"
   },
   "BT_TOTAL_PAGAR_2": {
-    "fieldType": "single-text",
+    "fieldType": "one-line",
     "map": "pago2",
     "alignment": "Right"
   },
   "BT_TOTAL_PAGAR_3": {
-    "fieldType": "single-text",
+    "fieldType": "one-line",
     "map": "pago3",
     "alignment": "Right"
   },
   "BT_DEBE_DESDE": {
-    "fieldType": "single-text",
+    "fieldType": "one-line",
     "map": "debeDesde"
   },
   "BT_DEBE_HASTA": {
-    "fieldType": "single-text",
+    "fieldType": "one-line",
     "map": "pagoHasta"
   },
   "BT_FICHA": {
-    "fieldType": "single-text",
+    "fieldType": "one-line",
     "map": "ficha"
   },
   "BT_PROPIETARIO": {
-    "fieldType": "single-text",
+    "fieldType": "one-line",
     "map": "propietario"
   }
 }

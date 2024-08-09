@@ -5,7 +5,7 @@ const { PDFDocument, TextAlignment, StandardFonts } = require('pdf-lib');
 const ReportError = require('../errors/reportError');
 
 const { CONFIG_PATH } = require('../config/config');
-const { SINGLE_TEXT, MULTIPLE_TEXT, BARCODE } = require('../constants/reportFieldTypes');
+const { ONE_LINE, MULTI_LINE, BARCODE } = require('../constants/reportFieldTypes');
 const { DEFAULT_FONT_SIZE, DEFAULT_ALIGNMENT } = require('../constants/reportFieldDefaultFormat');
 
 const { generateBarcode } = require('./barcode');
@@ -45,7 +45,7 @@ function applyTextFonts(field, fieldMap, fonts) {
   field.updateAppearances(font);
 }
 
-function fillMultipleTextField(field, fieldMap, data) {
+function fillMultilineTextField(field, fieldMap, data) {
   const map = fieldMap.map;
   let text = '';
   data[map].forEach(item => {
@@ -57,7 +57,7 @@ function fillMultipleTextField(field, fieldMap, data) {
   field.setText(text);
 }
 
-function fillSingleTextField(field, fieldMap, data) {
+function fillOnelineTextField(field, fieldMap, data) {
   const map = fieldMap.map;
   field.setText(data[map][0]);
 }
@@ -100,15 +100,15 @@ async function generateReceipt(data) {
       let field = null;
 
       switch (fieldMap.fieldType) {
-        case SINGLE_TEXT:
+        case ONE_LINE:
           field = form.getTextField(key);
-          fillSingleTextField(field, fieldMap, data);
+          fillOnelineTextField(field, fieldMap, data);
           applyTextFormat(field, fieldMap);
           applyTextFonts(field, fieldMap, fonts);
           break;
-        case MULTIPLE_TEXT:
+        case MULTI_LINE:
           field = form.getTextField(key);
-          fillMultipleTextField(field, fieldMap, data);
+          fillMultilineTextField(field, fieldMap, data);
           applyTextFormat(field, fieldMap);
           applyTextFonts(field, fieldMap, fonts);
           break;
