@@ -1,4 +1,10 @@
 {
+  "REFERENCIA": {
+    "fieldType": "single-text",
+    "map": "referencia",
+    "fontSize": 10,
+    "isBold": true
+  },
   "FICHA": {
     "fieldType": "single-text",
     "map": "ficha"
@@ -9,23 +15,40 @@
   },
   "PROPIETARIO": {
     "fieldType": "single-text",
-    "map": "propietario",
-    "fontSize": 8
+    "map": "propietario"
   },
   "PROPIETARIO_ID": {
     "fieldType": "single-text",
     "map": "propietarioId"
   },
+  "DIRECCION_1": {
+    "fieldType": "single-text",
+    "map": "direccion1"
+  },
+  "DIRECCION_2": {
+    "fieldType": "single-text",
+    "map": "direccion2"
+  },
+  "DIRECCION_3": {
+    "fieldType": "single-text",
+    "map": "direccion3"
+  },
+  "DIRECCION_4": {
+    "fieldType": "single-text",
+    "map": "direccion4"
+  },
   "FACTURA": {
     "fieldType": "single-text",
     "map": "factura",
     "alignment": "Center",
+    "fontSize": 10,
     "isBold": true
   },
   "LLAVE": {
     "fieldType": "single-text",
     "map": "llave",
     "alignment": "Center",
+    "fontSize": 10,
     "isBold": true
   },
   "AREA_HA": {
@@ -36,9 +59,9 @@
     "fieldType": "single-text",
     "map": "areaMts"
   },
-  "CONSTRUIDO": {
+  "AREA_CONSTRUIDO": {
     "fieldType": "single-text",
-    "map": "construido"
+    "map": "areaConstruido"
   },
   "MATRICULA": {
     "fieldType": "single-text",
@@ -48,9 +71,9 @@
     "fieldType": "single-text",
     "map": "estrato"
   },
-  "FECHA_FACTURACION": {
+  "FECHA_FACTURA": {
     "fieldType": "single-text",
-    "map": "fechaFacturacion"
+    "map": "fechaFactura"
   },
   "DEBE_DESDE": {
     "fieldType": "single-text",
@@ -59,12 +82,14 @@
   "PAGO_DESDE": {
     "fieldType": "single-text",
     "map": "pagoDesde",
-    "alignment": "Center"
+    "alignment": "Center",
+    "fontSize": 10
   },
   "PAGO_HASTA": {
     "fieldType": "single-text",
     "map": "pagoHasta",
-    "alignment": "Center"
+    "alignment": "Center",
+    "fontSize": 10
   },
   "CAPITAL_CONCEPTO": {
     "fieldType": "multiple-text",
@@ -82,39 +107,103 @@
     "alignment": "Right",
     "fontSize": 7
   },
-  "CAPITAL_DESC_1": {
+  "CAPITAL_DESCUENTO_1": {
     "fieldType": "multiple-text",
-    "map": "capitalDesc1",
+    "map": "capitalDescuento1",
     "alignment": "Right",
     "fontSize": 7
   },
-  "CAPITAL_POR_DESC_1": {
+  "CAPITAL_PORCENTAJE_DESCUENTO_1": {
     "fieldType": "multiple-text",
-    "map": "capitalPorDesc1",
+    "map": "capitalPorcentajeDescuento1",
     "alignment": "Right",
     "fontSize": 7
   },
-  "CAPITAL_DESC_2": {
+  "CAPITAL_DESCUENTO_2": {
     "fieldType": "multiple-text",
-    "map": "capitalDesc2",
+    "map": "capitalDescuento2",
     "alignment": "Right",
     "fontSize": 7
   },
-  "CAPITAL_POR_DESC_2": {
+  "CAPITAL_PORCENTAJE_DESCUENTO_2": {
     "fieldType": "multiple-text",
-    "map": "capitalPorDesc2",
+    "map": "capitalPorcentajeDescuento2",
     "alignment": "Right",
     "fontSize": 7
   },
-  "CAPITAL_DESC_3": {
+  "CAPITAL_DESCUENTO_3": {
     "fieldType": "multiple-text",
-    "map": "capitalDesc3",
+    "map": "capitalDescuento3",
     "alignment": "Right",
     "fontSize": 7
   },
-  "CAPITAL_POR_DESC_3": {
+  "CAPITAL_PORCENTAJE_DESCUENTO_3": {
     "fieldType": "multiple-text",
-    "map": "capitalPorDesc3",
+    "map": "capitalPorcentajeDescuento3",
+    "alignment": "Right",
+    "fontSize": 7
+  },
+  "INTERESES_CONCEPTO": {
+    "fieldType": "multiple-text",
+    "map": "interesesConcepto",
+    "fontSize": 7
+  },
+  "INTERESES_PERIODO": {
+    "fieldType": "multiple-text",
+    "map": "interesesPeriodo",
+    "fontSize": 7
+  },
+  "INTERESES_VALOR_1": {
+    "fieldType": "multiple-text",
+    "map": "interesesValor1",
+    "alignment": "Right",
+    "fontSize": 7
+  },
+  "INTERESES_REBAJA_1": {
+    "fieldType": "multiple-text",
+    "map": "interesesRebaja1",
+    "alignment": "Right",
+    "fontSize": 7
+  },
+  "INTERESES_PORCENTAJE_REBAJA_1": {
+    "fieldType": "multiple-text",
+    "map": "interesesPorcentajeRebaja1",
+    "alignment": "Right",
+    "fontSize": 7
+  },
+  "INTERESES_VALOR_2": {
+    "fieldType": "multiple-text",
+    "map": "interesesValor2",
+    "alignment": "Right",
+    "fontSize": 7
+  },
+  "INTERESES_REBAJA_2": {
+    "fieldType": "multiple-text",
+    "map": "interesesRebaja2",
+    "alignment": "Right",
+    "fontSize": 7
+  },
+  "INTERESES_PORCENTAJE_REBAJA_2": {
+    "fieldType": "multiple-text",
+    "map": "interesesPorcentajeRebaja2",
+    "alignment": "Right",
+    "fontSize": 7
+  },
+  "INTERESES_VALOR_3": {
+    "fieldType": "multiple-text",
+    "map": "interesesValor3",
+    "alignment": "Right",
+    "fontSize": 7
+  },
+  "INTERESES_REBAJA_3": {
+    "fieldType": "multiple-text",
+    "map": "interesesRebaja3",
+    "alignment": "Right",
+    "fontSize": 7
+  },
+  "INTERESES_PORCENTAJE_REBAJA_3": {
+    "fieldType": "multiple-text",
+    "map": "interesesPorcentajeRebaja3",
     "alignment": "Right",
     "fontSize": 7
   },
@@ -148,11 +237,6 @@
     "map": "pago3",
     "alignment": "Right"
   },
-  "REFERENCIA": {
-    "fieldType": "single-text",
-    "map": "referencia",
-    "isBold": true
-  },
   "CODIGO_BARRAS_1": {
     "fieldType": "barcode",
     "map": "codigoBarras1"
@@ -168,6 +252,7 @@
   "BT_REFERENCIA": {
     "fieldType": "single-text",
     "map": "referencia",
+    "fontSize": 10,
     "isBold": true
   },
   "BT_FECHA_PAGO_HASTA_1": {
@@ -204,13 +289,16 @@
     "fieldType": "single-text",
     "map": "debeDesde"
   },
+  "BT_DEBE_HASTA": {
+    "fieldType": "single-text",
+    "map": "pagoHasta"
+  },
   "BT_FICHA": {
     "fieldType": "single-text",
     "map": "ficha"
   },
   "BT_PROPIETARIO": {
     "fieldType": "single-text",
-    "map": "propietario",
-    "fontSize": 8
+    "map": "propietario"
   }
 }
