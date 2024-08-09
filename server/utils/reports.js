@@ -36,7 +36,7 @@ function truncateText(text, font, fontSize, fieldSize) {
 
 //* Format
 
-async function loadEmbededFonts(pdfDoc) {
+async function loadEmbeddedFonts(pdfDoc) {
   // HACK: pdf-lib does not support native text decoration
   const regular = await pdfDoc.embedFont(StandardFonts.Helvetica);
   const bold = await pdfDoc.embedFont(StandardFonts.HelveticaBold);
@@ -142,7 +142,7 @@ async function generateReceipt(data) {
     const formMapFile = await fs.promises.readFile(RECEIPT_FORM_MAP_URL);
     const formMap = JSON.parse(formMapFile);
 
-    FONTS = await loadEmbededFonts(pdfDoc);
+    FONTS = await loadEmbeddedFonts(pdfDoc);
 
     for (const key of Object.keys(formMap)) {
       const fieldMap = formMap[key];
