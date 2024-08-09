@@ -63,9 +63,9 @@ function applyTextFormat(field, fieldMap) {
     ? TextAlignment[fieldMap.alignment]
     : TextAlignment[DEFAULT_ALIGNMENT];
 
-  field.updateAppearances(font);
   field.setFontSize(fontSize);
   field.setAlignment(alignment);
+  field.updateAppearances(font);
 }
 
 //* Fill
