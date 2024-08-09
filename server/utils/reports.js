@@ -45,7 +45,7 @@ function applyTextFonts(field, fieldMap, fonts) {
   field.updateAppearances(font);
 }
 
-function fillMultilineTextField(field, fieldMap, data) {
+function fillMultiLineTextField(field, fieldMap, data) {
   const map = fieldMap.map;
   let text = '';
   data[map].forEach(item => {
@@ -57,23 +57,39 @@ function fillMultilineTextField(field, fieldMap, data) {
   field.setText(text);
 }
 
-function fillOnelineTextField(field, fieldMap, data) {
+function fillOneLineTextField(field, fieldMap, data) {
   const map = fieldMap.map;
   field.setText(data[map][0]);
 }
 
-function validateMap(field, fieldMap, data) {
+function fillField(key, fieldMap, fillFieldCallback) {
+  const hasMultipleFields = fieldMap.hasMultipleFields;
+  const fieldMapBase = fieldMap.map;
+  const numberOfFields = hasMultipleFields && fieldMap.numberOfFields && !isNaN(fieldMap.numberOfFields)
+    ? fieldMap.numberOfFields
+    : 1;
+
+  for (let i = 1; i <= numberOfFields; i++) {
+    let fieldName = hasMultipleFields ? `${key}_${i}` : key;
+    fieldMap.map = hasMultipleFields ? `${fieldMapBase}${i}` : fieldMapBase;
+    fillFieldCallback(fieldName);
+  }
+}
+
+function validateMappedField(field, fieldMap, data) {
+  const hasData = data[fieldMap.map] !== undefined;
+  if (!hasData) {
+    throw new Error(`The mapped value "${fieldMap.map}" in field ${field} does not exist in the DB schema`);
+  }
+}
+
+function validateMapStructure(field, fieldMap) {
   if (!Object.hasOwn(fieldMap, 'fieldType')) {
     throw new Error(`Missing \"fieldType\" property in field ${field}`);
   }
 
   if (!Object.hasOwn(fieldMap, 'map')) {
     throw new Error(`Missing \"map\" property in field ${field}`);
-  }
-
-  const hasData = data[fieldMap.map] !== undefined;
-  if (!hasData) {
-    throw new Error(`The mapped value "${fieldMap.map}" in field ${field} does not exist in the DB schema`);
   }
 }
 
@@ -95,29 +111,46 @@ async function generateReceipt(data) {
 
     for (const key of Object.keys(formMap)) {
       const fieldMap = formMap[key];
-      validateMap(key, fieldMap, data);
-
-      let field = null;
+      validateMapStructure(key, fieldMap);
 
       switch (fieldMap.fieldType) {
-        case ONE_LINE:
-          field = form.getTextField(key);
-          fillOnelineTextField(field, fieldMap, data);
-          applyTextFormat(field, fieldMap);
-          applyTextFonts(field, fieldMap, fonts);
+        case ONE_LINE: {
+          fillField(
+            key,
+            fieldMap,
+            (key) => {
+              validateMappedField(key, fieldMap, data);
+              let field = form.getTextField(key);
+              fillOneLineTextField(field, fieldMap, data);
+              applyTextFormat(field, fieldMap);
+              applyTextFonts(field, fieldMap, fonts);
+            }
+          );
           break;
-        case MULTI_LINE:
-          field = form.getTextField(key);
-          fillMultilineTextField(field, fieldMap, data);
-          applyTextFormat(field, fieldMap);
-          applyTextFonts(field, fieldMap, fonts);
+        }
+        case MULTI_LINE: {
+          fillField(
+            key,
+            fieldMap,
+            (key) => {
+              validateMappedField(key, fieldMap, data);
+              let field = form.getTextField(key);
+              fillMultiLineTextField(field, fieldMap, data);
+              applyTextFormat(field, fieldMap);
+              applyTextFonts(field, fieldMap, fonts);
+            }
+          );
           break;
-        case BARCODE:
-          field = form.getButton(key);
+        }
+        case BARCODE: {
+          // TODO: Allow hasMultipleFields for barcode type 
+          validateMappedField(key, fieldMap, data);
+          let field = form.getButton(key);
           const barcode = await generateBarcode(data[fieldMap.map][0]);
           const barcodeImage = await pdfDoc.embedPng(barcode);
           field.setImage(barcodeImage);
           break;
+        }
         default:
           throw new Error(`The type specified for the field ${key} is not valid`);
       }

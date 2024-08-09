@@ -21,21 +21,11 @@
     "fieldType": "one-line",
     "map": "propietarioId"
   },
-  "DIRECCION_1": {
+  "DIRECCION": {
     "fieldType": "one-line",
-    "map": "direccion1"
-  },
-  "DIRECCION_2": {
-    "fieldType": "one-line",
-    "map": "direccion2"
-  },
-  "DIRECCION_3": {
-    "fieldType": "one-line",
-    "map": "direccion3"
-  },
-  "DIRECCION_4": {
-    "fieldType": "one-line",
-    "map": "direccion4"
+    "map": "direccion",
+    "hasMultipleFields": true,
+    "numberOfFields": 4
   },
   "FACTURA": {
     "fieldType": "one-line",
@@ -107,39 +97,19 @@
     "alignment": "Right",
     "fontSize": 7
   },
-  "CAPITAL_DESCUENTO_1": {
+  "CAPITAL_DESCUENTO": {
     "fieldType": "multi-line",
-    "map": "capitalDescuento1",
+    "map": "capitalDescuento",
+    "hasMultipleFields": true,
+    "numberOfFields": 3,
     "alignment": "Right",
     "fontSize": 7
   },
-  "CAPITAL_PORCENTAJE_DESCUENTO_1": {
+  "CAPITAL_PORCENTAJE_DESCUENTO": {
     "fieldType": "multi-line",
-    "map": "capitalPorcentajeDescuento1",
-    "alignment": "Right",
-    "fontSize": 7
-  },
-  "CAPITAL_DESCUENTO_2": {
-    "fieldType": "multi-line",
-    "map": "capitalDescuento2",
-    "alignment": "Right",
-    "fontSize": 7
-  },
-  "CAPITAL_PORCENTAJE_DESCUENTO_2": {
-    "fieldType": "multi-line",
-    "map": "capitalPorcentajeDescuento2",
-    "alignment": "Right",
-    "fontSize": 7
-  },
-  "CAPITAL_DESCUENTO_3": {
-    "fieldType": "multi-line",
-    "map": "capitalDescuento3",
-    "alignment": "Right",
-    "fontSize": 7
-  },
-  "CAPITAL_PORCENTAJE_DESCUENTO_3": {
-    "fieldType": "multi-line",
-    "map": "capitalPorcentajeDescuento3",
+    "map": "capitalPorcentajeDescuento",
+    "hasMultipleFields": true,
+    "numberOfFields": 3,
     "alignment": "Right",
     "fontSize": 7
   },
@@ -153,88 +123,42 @@
     "map": "interesesPeriodo",
     "fontSize": 7
   },
-  "INTERESES_VALOR_1": {
+  "INTERESES_VALOR": {
     "fieldType": "multi-line",
-    "map": "interesesValor1",
+    "map": "interesesValor",
+    "hasMultipleFields": true,
+    "numberOfFields": 3,
     "alignment": "Right",
     "fontSize": 7
   },
-  "INTERESES_REBAJA_1": {
+  "INTERESES_REBAJA": {
     "fieldType": "multi-line",
-    "map": "interesesRebaja1",
+    "map": "interesesRebaja",
+    "hasMultipleFields": true,
+    "numberOfFields": 3,
     "alignment": "Right",
     "fontSize": 7
   },
-  "INTERESES_PORCENTAJE_REBAJA_1": {
+  "INTERESES_PORCENTAJE_REBAJA": {
     "fieldType": "multi-line",
-    "map": "interesesPorcentajeRebaja1",
+    "map": "interesesPorcentajeRebaja",
+    "hasMultipleFields": true,
+    "numberOfFields": 3,
     "alignment": "Right",
     "fontSize": 7
   },
-  "INTERESES_VALOR_2": {
-    "fieldType": "multi-line",
-    "map": "interesesValor2",
-    "alignment": "Right",
-    "fontSize": 7
-  },
-  "INTERESES_REBAJA_2": {
-    "fieldType": "multi-line",
-    "map": "interesesRebaja2",
-    "alignment": "Right",
-    "fontSize": 7
-  },
-  "INTERESES_PORCENTAJE_REBAJA_2": {
-    "fieldType": "multi-line",
-    "map": "interesesPorcentajeRebaja2",
-    "alignment": "Right",
-    "fontSize": 7
-  },
-  "INTERESES_VALOR_3": {
-    "fieldType": "multi-line",
-    "map": "interesesValor3",
-    "alignment": "Right",
-    "fontSize": 7
-  },
-  "INTERESES_REBAJA_3": {
-    "fieldType": "multi-line",
-    "map": "interesesRebaja3",
-    "alignment": "Right",
-    "fontSize": 7
-  },
-  "INTERESES_PORCENTAJE_REBAJA_3": {
-    "fieldType": "multi-line",
-    "map": "interesesPorcentajeRebaja3",
-    "alignment": "Right",
-    "fontSize": 7
-  },
-  "FECHA_PAGO_HASTA_1": {
+  "FECHA_PAGO_HASTA": {
     "fieldType": "one-line",
-    "map": "fechaPago1",
+    "map": "fechaPago",
+    "hasMultipleFields": true,
+    "numberOfFields": 3,
     "alignment": "Center"
   },
-  "FECHA_PAGO_HASTA_2": {
+  "TOTAL_PAGAR": {
     "fieldType": "one-line",
-    "map": "fechaPago2",
-    "alignment": "Center"
-  },
-  "FECHA_PAGO_HASTA_3": {
-    "fieldType": "one-line",
-    "map": "fechaPago3",
-    "alignment": "Center"
-  },
-  "TOTAL_PAGAR_1": {
-    "fieldType": "one-line",
-    "map": "pago1",
-    "alignment": "Right"
-  },
-  "TOTAL_PAGAR_2": {
-    "fieldType": "one-line",
-    "map": "pago2",
-    "alignment": "Right"
-  },
-  "TOTAL_PAGAR_3": {
-    "fieldType": "one-line",
-    "map": "pago3",
+    "map": "pago",
+    "hasMultipleFields": true,
+    "numberOfFields": 3,
     "alignment": "Right"
   },
   "CODIGO_BARRAS_1": {
@@ -255,34 +179,18 @@
     "fontSize": 10,
     "isBold": true
   },
-  "BT_FECHA_PAGO_HASTA_1": {
+  "BT_FECHA_PAGO_HASTA": {
     "fieldType": "one-line",
-    "map": "fechaPago1",
+    "map": "fechaPago",
+    "hasMultipleFields": true,
+    "numberOfFields": 3,
     "alignment": "Center"
   },
-  "BT_FECHA_PAGO_HASTA_2": {
+  "BT_TOTAL_PAGAR": {
     "fieldType": "one-line",
-    "map": "fechaPago2",
-    "alignment": "Center"
-  },
-  "BT_FECHA_PAGO_HASTA_3": {
-    "fieldType": "one-line",
-    "map": "fechaPago3",
-    "alignment": "Center"
-  },
-  "BT_TOTAL_PAGAR_1": {
-    "fieldType": "one-line",
-    "map": "pago1",
-    "alignment": "Right"
-  },
-  "BT_TOTAL_PAGAR_2": {
-    "fieldType": "one-line",
-    "map": "pago2",
-    "alignment": "Right"
-  },
-  "BT_TOTAL_PAGAR_3": {
-    "fieldType": "one-line",
-    "map": "pago3",
+    "map": "pago",
+    "hasMultipleFields": true,
+    "numberOfFields": 3,
     "alignment": "Right"
   },
   "BT_DEBE_DESDE": {
