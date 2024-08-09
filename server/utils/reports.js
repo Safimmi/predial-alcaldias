@@ -95,7 +95,7 @@ function fillOneLineTextField(field, fieldMap, data) {
   field.setText(data[map][0]);
 }
 
-function fillField(key, fieldMap, fillFieldCallback) {
+async function fillField(key, fieldMap, fillFieldCallback) {
   const hasMultipleFields = fieldMap.hasMultipleFields;
   const fieldMapBase = fieldMap.map;
   const numberOfFields = hasMultipleFields && fieldMap.numberOfFields && !isNaN(fieldMap.numberOfFields)
@@ -105,7 +105,7 @@ function fillField(key, fieldMap, fillFieldCallback) {
   for (let i = 1; i <= numberOfFields; i++) {
     let fieldName = hasMultipleFields ? `${key}_${i}` : key;
     fieldMap.map = hasMultipleFields ? `${fieldMapBase}${i}` : fieldMapBase;
-    fillFieldCallback(fieldName);
+    await fillFieldCallback(fieldName);
   }
 }
 
@@ -150,10 +150,10 @@ async function generateReceipt(data) {
 
       switch (fieldMap.fieldType) {
         case ONE_LINE: {
-          fillField(
+          await fillField(
             key,
             fieldMap,
-            (key) => {
+            async (key) => {
               validateMappedField(key, fieldMap, data);
               let field = form.getTextField(key);
               fillOneLineTextField(field, fieldMap, data);
@@ -163,10 +163,10 @@ async function generateReceipt(data) {
           break;
         }
         case MULTI_LINE: {
-          fillField(
+          await fillField(
             key,
             fieldMap,
-            (key) => {
+            async (key) => {
               validateMappedField(key, fieldMap, data);
               let field = form.getTextField(key);
               fillMultiLineTextField(field, fieldMap, data);
@@ -176,12 +176,17 @@ async function generateReceipt(data) {
           break;
         }
         case BARCODE: {
-          // TODO: Allow hasMultipleFields for barcode type 
-          validateMappedField(key, fieldMap, data);
-          let field = form.getButton(key);
-          const barcode = await generateBarcode(data[fieldMap.map][0]);
-          const barcodeImage = await pdfDoc.embedPng(barcode);
-          field.setImage(barcodeImage);
+          await fillField(
+            key,
+            fieldMap,
+            async (key) => {
+              validateMappedField(key, fieldMap, data);
+              let field = form.getButton(key);
+              const barcode = await generateBarcode(data[fieldMap.map][0]);
+              const barcodeImage = await pdfDoc.embedPng(barcode);
+              field.setImage(barcodeImage);
+            }
+          );
           break;
         }
         default:
