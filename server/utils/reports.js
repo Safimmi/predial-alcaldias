@@ -6,6 +6,7 @@ const ReportError = require('../errors/reportError');
 
 const { CONFIG_PATH } = require('../config/config');
 const { SINGLE_TEXT, MULTIPLE_TEXT, BARCODE } = require('../constants/reportFieldTypes');
+const { DEFAULT_FONT_SIZE, DEFAULT_ALIGNMENT } = require('../constants/reportFieldDefaultFormat');
 
 const { generateBarcode } = require('./barcode');
 
@@ -28,10 +29,10 @@ async function loadEmbededFonts(pdfDoc) {
 }
 
 function applyTextFormat(field, fieldMap) {
-  const fontSize = fieldMap.fontSize ? fieldMap.fontSize : 10;
+  const fontSize = fieldMap.fontSize ? fieldMap.fontSize : DEFAULT_FONT_SIZE;
   const alignment = fieldMap.alignment && Object.hasOwn(TextAlignment, fieldMap.alignment)
     ? TextAlignment[fieldMap.alignment]
-    : TextAlignment.Left;
+    : TextAlignment[DEFAULT_ALIGNMENT];
 
   field.setFontSize(fontSize);
   field.setAlignment(alignment);
