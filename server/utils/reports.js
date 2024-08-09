@@ -3,12 +3,13 @@ const path = require('path');
 const { PDFDocument, TextAlignment, StandardFonts } = require('pdf-lib');
 
 const ReportError = require('../errors/reportError');
+const { generateBarcode } = require('./barcode');
 
 const { CONFIG_PATH } = require('../config/config');
 const { ONE_LINE, MULTI_LINE, BARCODE } = require('../constants/reportFieldTypes');
 const { DEFAULT_FONT_SIZE, DEFAULT_ALIGNMENT } = require('../constants/reportFieldDefaultFormat');
 
-const { generateBarcode } = require('./barcode');
+let FONTS = null;
 
 //* Utils
 
@@ -16,6 +17,24 @@ async function saveFilledReport(pdfBytes) {
   const OUTPUT_FORM_URL = path.join(CONFIG_PATH, "/receipt-form-filled.pdf");
   await fs.promises.writeFile(OUTPUT_FORM_URL, pdfBytes);
 }
+
+function truncateText(text, font, fontSize, fieldSize) {
+  let truncatedText = '';
+  let currentWidth = 0;
+
+  for (const char of text) {
+    const charWidth = font.widthOfTextAtSize(char, fontSize);
+    if (currentWidth + charWidth > fieldSize) {
+      break;
+    }
+    truncatedText += char;
+    currentWidth += charWidth;
+  }
+
+  return truncatedText;
+}
+
+//* Format
 
 async function loadEmbededFonts(pdfDoc) {
   // HACK: pdf-lib does not support native text decoration
@@ -28,28 +47,42 @@ async function loadEmbededFonts(pdfDoc) {
   };
 }
 
+function getFont(fieldMap) {
+  const isBold = fieldMap.isBold;
+  return isBold ? FONTS.bold : FONTS.regular;
+}
+
+function getFontSize(fieldMap) {
+  return fieldMap.fontSize ? fieldMap.fontSize : DEFAULT_FONT_SIZE;
+}
+
 function applyTextFormat(field, fieldMap) {
-  const fontSize = fieldMap.fontSize ? fieldMap.fontSize : DEFAULT_FONT_SIZE;
+  const font = getFont(fieldMap);
+  const fontSize = getFontSize(fieldMap);
   const alignment = fieldMap.alignment && Object.hasOwn(TextAlignment, fieldMap.alignment)
     ? TextAlignment[fieldMap.alignment]
     : TextAlignment[DEFAULT_ALIGNMENT];
 
+  field.updateAppearances(font);
   field.setFontSize(fontSize);
   field.setAlignment(alignment);
 }
 
-function applyTextFonts(field, fieldMap, fonts) {
-  const isBold = fieldMap.isBold;
-  const font = isBold ? fonts.bold : fonts.regular;
-
-  field.updateAppearances(font);
-}
+//* Fill
 
 function fillMultiLineTextField(field, fieldMap, data) {
   const map = fieldMap.map;
+  const isTruncated = fieldMap.isTruncated;
+  const fieldSize = isTruncated && fieldMap.fieldSize ? fieldMap.fieldSize : null;
+  const font = getFont(fieldMap);
+  const fontSize = getFontSize(fieldMap);
+
   let text = '';
+
   data[map].forEach(item => {
-    item = `${item}\n`;
+    item = isTruncated && fieldSize
+      ? `${truncateText(item, font, fontSize, fieldSize)}\n`
+      : `${item}\n`;
     text = `${text}${item}`;
   });
 
@@ -75,6 +108,8 @@ function fillField(key, fieldMap, fillFieldCallback) {
     fillFieldCallback(fieldName);
   }
 }
+
+//* Validations
 
 function validateMappedField(field, fieldMap, data) {
   const hasData = data[fieldMap.map] !== undefined;
@@ -107,7 +142,7 @@ async function generateReceipt(data) {
     const formMapFile = await fs.promises.readFile(RECEIPT_FORM_MAP_URL);
     const formMap = JSON.parse(formMapFile);
 
-    const fonts = await loadEmbededFonts(pdfDoc);
+    FONTS = await loadEmbededFonts(pdfDoc);
 
     for (const key of Object.keys(formMap)) {
       const fieldMap = formMap[key];
@@ -123,7 +158,6 @@ async function generateReceipt(data) {
               let field = form.getTextField(key);
               fillOneLineTextField(field, fieldMap, data);
               applyTextFormat(field, fieldMap);
-              applyTextFonts(field, fieldMap, fonts);
             }
           );
           break;
@@ -137,7 +171,6 @@ async function generateReceipt(data) {
               let field = form.getTextField(key);
               fillMultiLineTextField(field, fieldMap, data);
               applyTextFormat(field, fieldMap);
-              applyTextFonts(field, fieldMap, fonts);
             }
           );
           break;

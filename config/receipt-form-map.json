@@ -84,11 +84,15 @@
   "CAPITAL_CONCEPTO": {
     "fieldType": "multi-line",
     "map": "capitalConcepto",
+    "isTruncated": true,
+    "fieldSize": 115,
     "fontSize": 7
   },
   "CAPITAL_PERIODO": {
     "fieldType": "multi-line",
     "map": "capitalPeriodo",
+    "isTruncated": true,
+    "fieldSize": 52,
     "fontSize": 7
   },
   "CAPITAL_IMPUESTO": {
@@ -116,11 +120,15 @@
   "INTERESES_CONCEPTO": {
     "fieldType": "multi-line",
     "map": "interesesConcepto",
+    "isTruncated": true,
+    "fieldSize": 115,
     "fontSize": 7
   },
   "INTERESES_PERIODO": {
     "fieldType": "multi-line",
     "map": "interesesPeriodo",
+    "isTruncated": true,
+    "fieldSize": 52,
     "fontSize": 7
   },
   "INTERESES_VALOR": {
