@@ -7,7 +7,10 @@ const publicErrorMiddleware = (err, req, res, next) => {
   res.status(statusCode);
 
   const isServerError = res.statusCode.toString().startsWith('5');
-  err.message = isServerError ? "Error del servidor" : err.message;
+  const isReport = err.name === "ReportError";
+
+  err.message = isServerError && !isReport ? "Error del servidor" : err.message;
+  err.message = isReport ? "Se produjo un problema al generar el reporte" : err.message;
 
   res.set('Content-Type', 'text/html');
   res.send(`<p class="predial__error">${err.message}</p>`);
