@@ -28,6 +28,13 @@ app.use(errorMiddleware);
 database.once('open', () => {
   const port = process.env.PORT || 3000;
   app.listen(port, () => {
-    console.log(`Server started at port ${port}...`);
+    console.log(`   
+      ┌─────────────────────────────┐
+      │ 🚀 Server is running!       │
+      ├─────────────────────────────┤
+      │ Environment: ${process.env.NODE_ENV || 'development'}
+      │ Port: ${port}                  │
+      └─────────────────────────────┘
+    `);
   });
 });
