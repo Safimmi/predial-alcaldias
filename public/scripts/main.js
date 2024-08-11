@@ -17,6 +17,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const PREDIAL_INPUT_CONTAINER = document.getElementById('predialInputContainer');
   const PREDIAL_INPUT = document.getElementById('predialInput');
 
+  let PREDIAL_DOWNLOAD_BUTTON = null;
+
   //* METHODS
 
   function init() {
@@ -59,6 +61,39 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
+  function downloadPredial(e) {
+    e.preventDefault();
+
+    const target = e.currentTarget;
+    const url = target.href;
+    const predialNumber = target.dataset.ficha;
+    fetch(url, {
+      method: 'GET',
+      headers: {
+        'Accept': 'application/pdf, text/html',
+      }
+    })
+      .then(response => {
+        const contentType = response.headers.get('content-type');
+        if (!response.ok || contentType.includes('text/html')) {
+          return response.text().then(errorText => {
+            throw new ServerError(errorText);
+          });
+        }
+        return response.blob();
+      })
+      .then(blob => {
+        const link = document.createElement('a');
+        link.href = window.URL.createObjectURL(blob);
+        link.download = `${predialNumber}.pdf`;
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        window.URL.revokeObjectURL(url);
+      })
+      .catch(error => displayError(error, ERROR_TYPES.alertPopUp));
+  }
+
   //* EVENTS
 
   PREDIAL_INPUT_CONTAINER.addEventListener('click', () => PREDIAL_INPUT.focus());
@@ -91,6 +126,12 @@ document.addEventListener('DOMContentLoaded', () => {
           });
       })
       .then(predialData => DATA_CONTAINER.innerHTML = predialData)
+      .then(() => {
+        PREDIAL_DOWNLOAD_BUTTON = document.getElementById('predialDownload');
+        if (PREDIAL_DOWNLOAD_BUTTON) {
+          PREDIAL_DOWNLOAD_BUTTON.addEventListener('click', e => downloadPredial(e));
+        }
+      })
       .catch(error => displayError(error, ERROR_TYPES.htmlContainer))
       .finally(() => {
         toggleSpinner();
