@@ -1,4 +1,5 @@
 const Predial = require("../models/predial");
+const { generateReceipt } = require("../utils/reports");
 
 //TODO: Use "ficha" as the ID on the DB so it can be indexed => Use .findById() instead of .findOne()
 
@@ -34,20 +35,27 @@ const getPublicPredialById = async (req, res, next) => {
     const template = `
       <table class="predial-table">
         <tr class="predial-table__headers">
-          <th>Ficha</th>
-          <th>Matrícula</th>
           <th>Propietario</th>
-          <th>Recibo</th>
-          <th>Fecha de Facturación</th>
+          <th>Ficha Catastral</th>
+          <th>Matrícula</th>
+          <th>Dirección</th>
+          <th>Debe Desde</th>
+          <th>Recibo Predial</th>
         </tr>
         <tr class="predial-table__data">
+          <td> ${predial.propietario[0]} </td>
           <td> ${predial.ficha[0]} </td>
           <td> ${predial.matricula[0]} </td>
-          <td> ${predial.propietario[0]} </td>
-          <td> ${predial.fecha_facturacion[0]} </td>
+          <td> ${predial.direccion1[0]} </td>
+          <td> ${predial.debeDesde[0]} </td>
           <td>
             <div class="predial-table__download">
-              <img src="images/pdf.png" alt=recibo-pdf" />
+              <a
+                id="predialDownload"
+                href="/api/predial/public/receipt/${predial.ficha[0]}" 
+                data-ficha="${predial.ficha[0]}">
+                <img src="images/pdf.png" alt="Generar PDF" />
+              </a>
             </div>
           </td>
         </tr>
@@ -60,7 +68,29 @@ const getPublicPredialById = async (req, res, next) => {
   }
 };
 
+const getPredialReceipt = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const query = { ficha: { $in: [id] } };
+    const predial = await Predial.findOne(query);
+
+    if (!predial) {
+      res.status(404);
+      throw new Error(`No se encontró un registro con el número de ficha </br> ${id}`);
+    }
+
+    const report = await generateReceipt(predial);
+
+    res.setHeader('Content-Type', 'application/pdf');
+    res.setHeader('Content-Disposition', 'attachment; filename=predial.pdf');
+    res.status(200).end(report);
+  } catch (error) {
+    next(error);
+  };
+};
+
 module.exports = {
   getPredialById,
-  getPublicPredialById
+  getPublicPredialById,
+  getPredialReceipt
 };
