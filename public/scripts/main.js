@@ -1,3 +1,15 @@
+class ServerError extends Error {
+  constructor(message) {
+    super(message);
+    this.name = 'ServerError';
+  }
+}
+
+const ERROR_TYPES = Object.freeze({
+  htmlContainer: "html-container",
+  alertPopUp: "alert-pop-up"
+});
+
 document.addEventListener('DOMContentLoaded', () => {
   const SPINNER = document.getElementById('spinner');
   const DATA_CONTAINER = document.getElementById("dataContainer");
@@ -31,9 +43,20 @@ document.addEventListener('DOMContentLoaded', () => {
     SPINNER.classList.toggle('spinner--hidden');
   }
 
-  function displayError(error) {
-    console.log(error);
-    DATA_CONTAINER.innerHTML = `<p class="predial__error">Algo salió mal</p>`;
+  function displayError(error, type) {
+    const { htmlContainer, alertPopUp } = ERROR_TYPES;
+    const errorMessage = error instanceof ServerError ? error.message : "Algo salió mal";
+
+    switch (type) {
+      case htmlContainer:
+        DATA_CONTAINER.innerHTML = `<p class="predial__error">${errorMessage}</p>`;
+        break;
+      case alertPopUp:
+        alert(errorMessage);
+        break;
+      default:
+        break;
+    }
   }
 
   //* EVENTS
@@ -58,9 +81,17 @@ document.addEventListener('DOMContentLoaded', () => {
         'Accept': 'text/html'
       }
     })
-      .then(response => response.text())
+      .then(response => {
+        return response.text()
+          .then(responseText => {
+            if (!response.ok) {
+              throw new ServerError(responseText);
+            }
+            return responseText;
+          });
+      })
       .then(predialData => DATA_CONTAINER.innerHTML = predialData)
-      .catch(error => displayError(error))
+      .catch(error => displayError(error, ERROR_TYPES.htmlContainer))
       .finally(() => {
         toggleSpinner();
         PREDIAL_FORM.reset();
