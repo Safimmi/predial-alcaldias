@@ -35,20 +35,27 @@ const getPublicPredialById = async (req, res, next) => {
     const template = `
       <table class="predial-table">
         <tr class="predial-table__headers">
-          <th>Ficha</th>
-          <th>Matrícula</th>
           <th>Propietario</th>
-          <th>Recibo</th>
-          <th>Fecha de Facturación</th>
+          <th>Ficha Catastral</th>
+          <th>Matrícula</th>
+          <th>Dirección</th>
+          <th>Debe Desde</th>
+          <th>Recibo Predial</th>
         </tr>
         <tr class="predial-table__data">
+          <td> ${predial.propietario[0]} </td>
           <td> ${predial.ficha[0]} </td>
           <td> ${predial.matricula[0]} </td>
-          <td> ${predial.propietario[0]} </td>
-          <td> ${predial.fechaFactura[0]} </td>
+          <td> ${predial.direccion1[0]} </td>
+          <td> ${predial.debeDesde[0]} </td>
           <td>
             <div class="predial-table__download">
-              <img src="images/pdf.png" alt=recibo-pdf" />
+              <a
+                id="predialDownload"
+                href="/api/predial/public/receipt/${predial.ficha[0]}" 
+                data-ficha="${predial.ficha[0]}">
+                <img src="images/pdf.png" alt="Generar PDF" />
+              </a>
             </div>
           </td>
         </tr>

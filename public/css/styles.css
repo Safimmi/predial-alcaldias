@@ -1,7 +1,7 @@
 :root {
   --main-bg-color: #eee;
   --main-bg-color-light: #f7f6f6;
-  --accent-color: #e30510;
+  --accent-color: #1d59c9;
 
   --button-color: #707680;
   --button-text: #eee;
@@ -62,7 +62,6 @@ img {
   height: 100%;
   width: 100%;
   border-radius: 100%;
-  border: 0.3rem solid var(--accent-color);
 }
 
 .header__info {
@@ -180,9 +179,7 @@ img {
 }
 
 .predial-table__download {
-  display: flex;
   height: 2.5rem;
-  justify-content: center;
 }
 
 /**========= SPINNER ===========**/

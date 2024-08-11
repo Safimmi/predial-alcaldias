@@ -13,7 +13,7 @@ const publicErrorMiddleware = (err, req, res, next) => {
   err.message = isReport ? "Se produjo un problema al generar el reporte" : err.message;
 
   res.set('Content-Type', 'text/html');
-  res.send(`<p class="predial__error">${err.message}</p>`);
+  res.send(err.message);
 };
 
 module.exports = publicErrorMiddleware;
