@@ -14,6 +14,7 @@ const publicErrorMiddleware = require('./middlewares/publicErrorMiddleware');
 
 //* App
 const app = express();
+app.set('view engine', 'ejs');
 
 //* Static Files
 app.use(express.static(__dirname + '/../public'));
