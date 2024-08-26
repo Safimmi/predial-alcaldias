@@ -8,20 +8,24 @@ const databaseManager = require('./config/database/databaseManager');
 
 const predialRoutes = require('./routes/predialRoutes');
 
+const multiTenantMiddleware = require('./middlewares/multiTenantMiddleware');
 const errorMiddleware = require('./middlewares/errorMiddleware');
 const publicErrorMiddleware = require('./middlewares/publicErrorMiddleware');
 
 //* App
 const app = express();
 
-//*Static Files
+//* Static Files
 app.use(express.static(__dirname + '/../public'));
+
+//* Middlewares
+app.use(multiTenantMiddleware);
 
 //* Routes 
 app.get('/api/', (req, res) => { res.send('API'); });
 app.use('/api/predial', predialRoutes);
 
-//* Error Handlers (Middleware)
+//* Error Handlers (Middlewares)
 app.use(publicErrorMiddleware);
 app.use(errorMiddleware);
 
