@@ -6,6 +6,7 @@ const express = require('express');
 
 const databaseManager = require('./config/database/databaseManager');
 
+const pageRoutes = require('./routes/pageRoutes');
 const predialRoutes = require('./routes/predialRoutes');
 
 const multiTenantMiddleware = require('./middlewares/multiTenantMiddleware');
@@ -22,7 +23,8 @@ app.use(express.static(__dirname + '/../public'));
 //* Middlewares
 app.use(multiTenantMiddleware);
 
-//* Routes 
+//* Routes
+app.use(pageRoutes);
 app.get('/api/', (req, res) => { res.send('API'); });
 app.use('/api/predial', predialRoutes);
 
@@ -33,15 +35,15 @@ app.use(errorMiddleware);
 //* Server
 databaseManager.connectAllDb()
   .then(() => {
-  const port = process.env.PORT || 3000;
-  app.listen(port, () => {
-    console.log(`   
-      ┌─────────────────────────────┐
-      │ 🚀 Server is running!       │
-      ├─────────────────────────────┤
-      │ Environment: ${process.env.NODE_ENV || 'development'}
-      │ Port: ${port}                  │
-      └─────────────────────────────┘
-    `);
+    const port = process.env.PORT || 3000;
+    app.listen(port, () => {
+      console.log(`
+        ┌─────────────────────────────┐
+        │ 🚀 Server is running!       │
+        ├─────────────────────────────┤
+        │ Environment: ${process.env.NODE_ENV || 'development'}
+        │ Port: ${port}                  │
+        └─────────────────────────────┘
+      `);
+    });
   });
-});

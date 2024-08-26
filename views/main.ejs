@@ -4,8 +4,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Impuesto Predial Municipio de Natagaima Tolima</title>
-  <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+  <title>Impuesto Predial Municipio de <%= municipality %> <%= department %></title>
+  <link rel="icon" type="image/x-icon" href="/images/<%= subdomain %>/favicon.ico">
 
   <link type="text/css" rel="stylesheet" href="css/styles.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -16,13 +16,13 @@
   <div class="main__wrapper">
     <header class="header">
       <div class="header__logo">
-        <img class="header__logo-img" src="images/natagaima-tolima-logo-small.png" alt="logo-alcaldia" />
+        <img class="header__logo-img" src="images/<%= subdomain %>/logo-small.png" alt="logo-municipio" />
       </div>
 
       <div class="header__info">
-        <h1 class="header__info-title">Alcaldía Municipal de Natagaima Tolima</h1>
-        <h2 class="header__info-entity">Secretaria de Hacienda del Municipio de Natagaima Tolima</h2>
-        <p class="header__info-description">Consulta y descarga la Factura del Impuesto Predial del Municipio de Natagaima Tolima</p>
+        <h1 class="header__info-title">Alcaldía Municipal de <%= municipality %> <%= department %></h1>
+        <h2 class="header__info-entity"><%= entity %> del Municipio de <%= municipality %> <%= department %></h2>
+        <p class="header__info-description">Consulta y descarga la Factura del Impuesto Predial del Municipio de <%= municipality %> <%= department %></p>
       </div>
     </header>
 
@@ -66,8 +66,8 @@
 
     <footer class="footer">
       <div class="footer__copy">
-        <p>&copy; Creado y Diseñado por S &amp; Y Goblal Solutions Group</p>
-        <p>Mg Angel Eduardo Barrios Rodriguez | Todos los derechos reservados</p>
+        <p>&copy; Creado y Diseñado por ~~~~</p>
+        <p>~~~~ | Todos los derechos reservados</p>
       </div>
     </footer>
   </div>

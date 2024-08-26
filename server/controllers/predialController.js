@@ -52,7 +52,7 @@ const getPublicPredialById = async (req, res, next) => {
                 id="predialDownload"
                 href="/api/predial/public/receipt/${predial.ficha[0]}" 
                 data-ficha="${predial.ficha[0]}">
-                <img src="images/pdf.png" alt="Generar PDF" />
+                <img src="images/common/pdf.png" alt="Generar PDF" />
               </a>
             </div>
           </td>
