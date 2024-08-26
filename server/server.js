@@ -4,7 +4,8 @@ if (process.env.NODE_ENV !== 'production') {
 
 const express = require('express');
 
-const database = require('./config/database');
+const databaseManager = require('./config/database/databaseManager');
+
 const predialRoutes = require('./routes/predialRoutes');
 
 const errorMiddleware = require('./middlewares/errorMiddleware');
@@ -25,7 +26,8 @@ app.use(publicErrorMiddleware);
 app.use(errorMiddleware);
 
 //* Server
-database.once('open', () => {
+databaseManager.connectAllDb()
+  .then(() => {
   const port = process.env.PORT || 3000;
   app.listen(port, () => {
     console.log(`   
