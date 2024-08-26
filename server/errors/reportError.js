@@ -1,5 +1,3 @@
-const { error } = require("pdf-lib");
-
 class ReportError extends Error {
   constructor(cause = null, error = null) {
     super('An error occurred while generating the report');
