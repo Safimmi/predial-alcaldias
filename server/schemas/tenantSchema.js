@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const tenantSchema = mongoose.Schema({
-  code: {
+  codeDane: {
     type: String,
     unique: true,
   },
@@ -10,10 +10,10 @@ const tenantSchema = mongoose.Schema({
     required: true,
     unique: true,
   },
-  municipality: {
+  department: {
     type: String
   },
-  department: {
+  municipality: {
     type: String
   },
   entity: {
@@ -23,10 +23,6 @@ const tenantSchema = mongoose.Schema({
     type: Boolean
   },
   nit: {
-    type: String,
-    unique: true,
-  },
-  codeDane: {
     type: String,
     unique: true,
   }
