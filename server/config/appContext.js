@@ -15,6 +15,20 @@ const getContext = (contextName) => {
   return undefined;
 };
 
+const getPublicImagePath = (ctx) => {
+  const subdomain = ctx.subdomain.toLowerCase().split('-');
+  const municipality = `/${subdomain[0]}`;
+  const department = subdomain[1] ? `/${subdomain[1]}` : '';
+  return `/images${department}${municipality}`;
+};
+
+const getConfigPath = (ctx) => {
+  const subdomain = ctx.subdomain.toLowerCase().split('-');
+  const municipality = subdomain[0];
+  const department = subdomain[1] ? subdomain[1] : '';
+  return path.join(CONFIG_PATH, department, municipality);
+};
+
 const formatAndValidateContext = (ctx) => {
   ctx.municipality = ctx.municipality ? toUppercaseFirst(ctx.municipality) : '';
   ctx.department = ctx.department ? toUppercaseFirst(ctx.department) : '';
@@ -23,11 +37,12 @@ const formatAndValidateContext = (ctx) => {
 
 const addContext = (contextName, context) => {
   if (!hasContext(contextName)) {
+    formatAndValidateContext(context);
     APP_CTX[contextName] = {
       ...context,
-      configPath: path.join(CONFIG_PATH, context.subdomain)
+      configPath: getConfigPath(context),
+      imagePath: getPublicImagePath(context)
     };
-    formatAndValidateContext(APP_CTX[contextName]);
   }
 };
 

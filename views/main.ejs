@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Impuesto Predial Municipio de <%= municipality %> <%= department %></title>
-  <link rel="icon" type="image/x-icon" href="/images/<%= subdomain %>/favicon.ico">
+  <link rel="icon" type="image/x-icon" href="<%= imagePath %>/favicon.ico">
 
   <link type="text/css" rel="stylesheet" href="css/styles.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -16,12 +16,14 @@
   <div class="main__wrapper">
     <header class="header">
       <div class="header__logo">
-        <img class="header__logo-img" src="images/<%= subdomain %>/logo-small.png" alt="logo-municipio" />
+        <img class="header__logo-img" src="<%= imagePath %>/logo_200x200.png" alt="logo-municipio" />
       </div>
 
       <div class="header__info">
         <h1 class="header__info-title">Alcaldía Municipal de <%= municipality %> <%= department %></h1>
+        <% if (entity) { %>
         <h2 class="header__info-entity"><%= entity %> del Municipio de <%= municipality %> <%= department %></h2>
+        <% } %>
         <p class="header__info-description">Consulta y descarga la Factura del Impuesto Predial del Municipio de <%= municipality %> <%= department %></p>
       </div>
     </header>
