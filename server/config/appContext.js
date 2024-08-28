@@ -1,5 +1,5 @@
 const path = require('path');
-const { toUppercaseFirst } = require('../utils/utils');
+const { toTitleCase } = require('../utils/utils');
 
 const CONFIG_PATH = path.resolve(__dirname, "../../config");
 const APP_CTX = {};
@@ -30,8 +30,8 @@ const getConfigPath = (ctx) => {
 };
 
 const formatAndValidateContext = (ctx) => {
-  ctx.municipality = ctx.municipality ? toUppercaseFirst(ctx.municipality) : '';
-  ctx.department = ctx.department ? toUppercaseFirst(ctx.department) : '';
+  ctx.municipality = ctx.municipality ? toTitleCase(ctx.municipality) : '';
+  ctx.department = ctx.department ? toTitleCase(ctx.department) : '';
   ctx.entity = ctx.entity ? ctx.entity : '';
 };
 

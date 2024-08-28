@@ -5,14 +5,18 @@ function removeAllWhitespace(string) {
   return string.replace(/\s+/g, '');
 }
 
-function toUppercaseFirst(string) {
+function toTitleCase(string) {
   if (!string)
     return '';
 
-  return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
+  return string
+    .toLowerCase()
+    .split(/[\s-_]+/)
+    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(' ');
 }
 
 module.exports = {
   removeAllWhitespace,
-  toUppercaseFirst
+  toTitleCase
 };
