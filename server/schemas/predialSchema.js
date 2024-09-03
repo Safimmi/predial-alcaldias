@@ -75,6 +75,4 @@ const predialSchema = mongoose.Schema({
   num_barra_3: { type: [String], alias: 'codigoBarras3' },
 });
 
-const Predial = mongoose.model('predial', predialSchema, 'prediales');
-
-module.exports = Predial;
+module.exports = predialSchema;

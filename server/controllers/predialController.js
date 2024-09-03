@@ -1,13 +1,11 @@
-const Predial = require("../models/predial");
+const predialService = require("../services/predialService");
 const { generateReceipt } = require("../utils/reports");
-
-//TODO: Use "ficha" as the ID on the DB so it can be indexed => Use .findById() instead of .findOne()
 
 const getPredialById = async (req, res, next) => {
   try {
+    const { db } = req.tenant;
     const { id } = req.params;
-    const query = { ficha: { $in: [id] } };
-    const predial = await Predial.findOne(query);
+    const predial = await predialService.findPredialById(db, id);
 
     if (!predial) {
       res.status(404);
@@ -23,9 +21,9 @@ const getPredialById = async (req, res, next) => {
 
 const getPublicPredialById = async (req, res, next) => {
   try {
+    const { db } = req.tenant;
     const { id } = req.params;
-    const query = { ficha: { $in: [id] } };
-    const predial = await Predial.findOne(query);
+    const predial = await predialService.findPredialById(db, id);
 
     if (!predial) {
       res.status(404);
@@ -54,7 +52,7 @@ const getPublicPredialById = async (req, res, next) => {
                 id="predialDownload"
                 href="/api/predial/public/receipt/${predial.ficha[0]}" 
                 data-ficha="${predial.ficha[0]}">
-                <img src="images/pdf.png" alt="Generar PDF" />
+                <img src="images/common/pdf.png" alt="Generar PDF" />
               </a>
             </div>
           </td>
@@ -70,16 +68,16 @@ const getPublicPredialById = async (req, res, next) => {
 
 const getPredialReceipt = async (req, res, next) => {
   try {
+    const { db, configPath } = req.tenant;
     const { id } = req.params;
-    const query = { ficha: { $in: [id] } };
-    const predial = await Predial.findOne(query);
+    const predial = await predialService.findPredialById(db, id);
 
     if (!predial) {
       res.status(404);
       throw new Error(`No se encontró un registro con el número de ficha </br> ${id}`);
     }
 
-    const report = await generateReceipt(predial);
+    const report = await generateReceipt(predial, configPath);
 
     res.setHeader('Content-Type', 'application/pdf');
     res.setHeader('Content-Disposition', 'attachment; filename=predial.pdf');

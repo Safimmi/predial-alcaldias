@@ -5,7 +5,6 @@ const { PDFDocument, TextAlignment, StandardFonts } = require('pdf-lib');
 const ReportError = require('../errors/reportError');
 const { generateBarcode } = require('./barcode');
 
-const { CONFIG_PATH } = require('../config/config');
 const { ONE_LINE, MULTI_LINE, BARCODE } = require('../constants/reportFieldTypes');
 const { DEFAULT_FONT_SIZE, DEFAULT_ALIGNMENT } = require('../constants/reportFieldDefaultFormat');
 
@@ -13,8 +12,8 @@ let FONTS = null;
 
 //* Utils
 
-async function saveFilledReport(pdfBytes) {
-  const OUTPUT_FORM_URL = path.join(CONFIG_PATH, "/receipt-form-filled.pdf");
+async function saveFilledReport(pdfBytes, outputPath) {
+  const OUTPUT_FORM_URL = path.join(outputPath, "/receipt-form-filled.pdf");
   await fs.promises.writeFile(OUTPUT_FORM_URL, pdfBytes);
 }
 
@@ -130,10 +129,10 @@ function validateMapStructure(field, fieldMap) {
 
 //* Reports
 
-async function generateReceipt(data) {
+async function generateReceipt(data, configPath) {
   try {
-    const RECEIPT_FORM_URL = path.join(CONFIG_PATH, "/receipt-form.pdf");
-    const RECEIPT_FORM_MAP_URL = path.join(CONFIG_PATH, "/receipt-form-map.json");
+    const RECEIPT_FORM_URL = path.join(configPath, "/receipt-form.pdf");
+    const RECEIPT_FORM_MAP_URL = path.join(configPath, "/receipt-form-map.json");
 
     const formFile = await fs.promises.readFile(RECEIPT_FORM_URL);
     const pdfDoc = await PDFDocument.load(formFile);
@@ -198,7 +197,7 @@ async function generateReceipt(data) {
     const pdfBytes = await pdfDoc.save();
 
     if (process.env.NODE_ENV === "development") {
-      saveFilledReport(pdfBytes);
+      saveFilledReport(pdfBytes, configPath);
     }
     return pdfBytes;
   } catch (error) {
