@@ -62,9 +62,9 @@ const predialSchema = mongoose.Schema({
 
   //* Pago
 
-  pago_1: { type: [String], alias: 'pago1' },
-  pago_2: { type: [String], alias: 'pago2' },
-  pago_3: { type: [String], alias: 'pago3' },
+  pago1: { type: [String], alias: 'pago1' },
+  pago2: { type: [String], alias: 'pago2' },
+  pago3: { type: [String], alias: 'pago3' },
   fecha_pago_1: { type: [String], alias: 'fechaPago1' },
   fecha_pago_2: { type: [String], alias: 'fechaPago2' },
   fecha_pago_3: { type: [String], alias: 'fechaPago3' },
