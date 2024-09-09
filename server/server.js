@@ -4,30 +4,46 @@ if (process.env.NODE_ENV !== 'production') {
 
 const express = require('express');
 
-const database = require('./config/database');
+const databaseManager = require('./config/database/databaseManager');
+
+const pageRoutes = require('./routes/pageRoutes');
 const predialRoutes = require('./routes/predialRoutes');
 
+const multiTenantMiddleware = require('./middlewares/multiTenantMiddleware');
 const errorMiddleware = require('./middlewares/errorMiddleware');
 const publicErrorMiddleware = require('./middlewares/publicErrorMiddleware');
 
 //* App
 const app = express();
+app.set('view engine', 'ejs');
 
-//*Static Files
+//* Static Files
 app.use(express.static(__dirname + '/../public'));
 
-//* Routes 
+//* Middlewares
+app.use(multiTenantMiddleware);
+
+//* Routes
+app.use(pageRoutes);
 app.get('/api/', (req, res) => { res.send('API'); });
 app.use('/api/predial', predialRoutes);
 
-//* Error Handlers (Middleware)
+//* Error Handlers (Middlewares)
 app.use(publicErrorMiddleware);
 app.use(errorMiddleware);
 
 //* Server
-database.once('open', () => {
-  const port = process.env.PORT || 3000;
-  app.listen(port, () => {
-    console.log(`Server started at port ${port}...`);
+databaseManager.connectAllDb()
+  .then(() => {
+    const port = process.env.PORT || 3000;
+    app.listen(port, () => {
+      console.log(`
+        ┌─────────────────────────────┐
+        │ 🚀 Server is running!       │
+        ├─────────────────────────────┤
+        │ Environment: ${process.env.NODE_ENV || 'development'}
+        │ Port: ${port}                  │
+        └─────────────────────────────┘
+      `);
+    });
   });
-});

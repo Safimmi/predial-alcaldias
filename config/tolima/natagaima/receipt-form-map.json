@@ -1,0 +1,214 @@
+{
+  "REFERENCIA": {
+    "fieldType": "one-line",
+    "map": "referencia",
+    "fontSize": 10,
+    "isBold": true
+  },
+  "FICHA": {
+    "fieldType": "one-line",
+    "map": "ficha"
+  },
+  "FICHA_CORTA": {
+    "fieldType": "one-line",
+    "map": "fichaCorta"
+  },
+  "PROPIETARIO": {
+    "fieldType": "one-line",
+    "map": "propietario"
+  },
+  "PROPIETARIO_ID": {
+    "fieldType": "one-line",
+    "map": "propietarioId"
+  },
+  "DIRECCION": {
+    "fieldType": "one-line",
+    "map": "direccion",
+    "hasMultipleFields": true,
+    "numberOfFields": 4
+  },
+  "FACTURA": {
+    "fieldType": "one-line",
+    "map": "factura",
+    "alignment": "Center",
+    "fontSize": 10,
+    "isBold": true
+  },
+  "LLAVE": {
+    "fieldType": "one-line",
+    "map": "llave",
+    "alignment": "Center",
+    "fontSize": 10,
+    "isBold": true
+  },
+  "AREA_HA": {
+    "fieldType": "one-line",
+    "map": "areaHa"
+  },
+  "AREA_MTS": {
+    "fieldType": "one-line",
+    "map": "areaMts"
+  },
+  "AREA_CONSTRUIDO": {
+    "fieldType": "one-line",
+    "map": "areaConstruido"
+  },
+  "MATRICULA": {
+    "fieldType": "one-line",
+    "map": "matricula"
+  },
+  "ESTRATO": {
+    "fieldType": "one-line",
+    "map": "estrato"
+  },
+  "FECHA_FACTURA": {
+    "fieldType": "one-line",
+    "map": "fechaFactura"
+  },
+  "DEBE_DESDE": {
+    "fieldType": "one-line",
+    "map": "debeDesde"
+  },
+  "PAGO_DESDE": {
+    "fieldType": "one-line",
+    "map": "pagoDesde",
+    "alignment": "Center",
+    "fontSize": 10
+  },
+  "PAGO_HASTA": {
+    "fieldType": "one-line",
+    "map": "pagoHasta",
+    "alignment": "Center",
+    "fontSize": 10
+  },
+  "CAPITAL_CONCEPTO": {
+    "fieldType": "multi-line",
+    "map": "capitalConcepto",
+    "isTruncated": true,
+    "fieldSize": 115,
+    "fontSize": 7
+  },
+  "CAPITAL_PERIODO": {
+    "fieldType": "multi-line",
+    "map": "capitalPeriodo",
+    "isTruncated": true,
+    "fieldSize": 52,
+    "fontSize": 7
+  },
+  "CAPITAL_IMPUESTO": {
+    "fieldType": "multi-line",
+    "map": "capitalImpuesto",
+    "alignment": "Right",
+    "fontSize": 7
+  },
+  "CAPITAL_DESCUENTO": {
+    "fieldType": "multi-line",
+    "map": "capitalDescuento",
+    "hasMultipleFields": true,
+    "numberOfFields": 3,
+    "alignment": "Right",
+    "fontSize": 7
+  },
+  "CAPITAL_PORCENTAJE_DESCUENTO": {
+    "fieldType": "multi-line",
+    "map": "capitalPorcentajeDescuento",
+    "hasMultipleFields": true,
+    "numberOfFields": 3,
+    "alignment": "Right",
+    "fontSize": 7
+  },
+  "INTERESES_CONCEPTO": {
+    "fieldType": "multi-line",
+    "map": "interesesConcepto",
+    "isTruncated": true,
+    "fieldSize": 115,
+    "fontSize": 7
+  },
+  "INTERESES_PERIODO": {
+    "fieldType": "multi-line",
+    "map": "interesesPeriodo",
+    "isTruncated": true,
+    "fieldSize": 52,
+    "fontSize": 7
+  },
+  "INTERESES_VALOR": {
+    "fieldType": "multi-line",
+    "map": "interesesValor",
+    "hasMultipleFields": true,
+    "numberOfFields": 3,
+    "alignment": "Right",
+    "fontSize": 7
+  },
+  "INTERESES_REBAJA": {
+    "fieldType": "multi-line",
+    "map": "interesesRebaja",
+    "hasMultipleFields": true,
+    "numberOfFields": 3,
+    "alignment": "Right",
+    "fontSize": 7
+  },
+  "INTERESES_PORCENTAJE_REBAJA": {
+    "fieldType": "multi-line",
+    "map": "interesesPorcentajeRebaja",
+    "hasMultipleFields": true,
+    "numberOfFields": 3,
+    "alignment": "Right",
+    "fontSize": 7
+  },
+  "FECHA_PAGO_HASTA": {
+    "fieldType": "one-line",
+    "map": "fechaPago",
+    "hasMultipleFields": true,
+    "numberOfFields": 3,
+    "alignment": "Center"
+  },
+  "TOTAL_PAGAR": {
+    "fieldType": "one-line",
+    "map": "pago",
+    "hasMultipleFields": true,
+    "numberOfFields": 3,
+    "alignment": "Right"
+  },
+  "CODIGO_BARRAS": {
+    "fieldType": "barcode",
+    "map": "codigoBarras",
+    "hasMultipleFields": true,
+    "numberOfFields": 3
+  },
+  "BT_REFERENCIA": {
+    "fieldType": "one-line",
+    "map": "referencia",
+    "fontSize": 10,
+    "isBold": true
+  },
+  "BT_FECHA_PAGO_HASTA": {
+    "fieldType": "one-line",
+    "map": "fechaPago",
+    "hasMultipleFields": true,
+    "numberOfFields": 3,
+    "alignment": "Center"
+  },
+  "BT_TOTAL_PAGAR": {
+    "fieldType": "one-line",
+    "map": "pago",
+    "hasMultipleFields": true,
+    "numberOfFields": 3,
+    "alignment": "Right"
+  },
+  "BT_DEBE_DESDE": {
+    "fieldType": "one-line",
+    "map": "debeDesde"
+  },
+  "BT_DEBE_HASTA": {
+    "fieldType": "one-line",
+    "map": "pagoHasta"
+  },
+  "BT_FICHA": {
+    "fieldType": "one-line",
+    "map": "ficha"
+  },
+  "BT_PROPIETARIO": {
+    "fieldType": "one-line",
+    "map": "propietario"
+  }
+}
